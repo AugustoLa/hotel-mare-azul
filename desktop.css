@@ -53,6 +53,8 @@ input.invalido,select.invalido{border-color:var(--vermelho);background:#fbeeee}
 .perigoBtn{background:var(--vermelho);color:#fff}
 .perigoBtn:hover:not(:disabled){background:#8f2a2a!important;color:#fff}
 .acoes{display:flex;gap:12px;align-items:center;margin-top:16px;flex-wrap:wrap}
+#cRegistrar{margin-top:16px} /* respiro entre a quantidade e o botão Registrar */
+#mObs{margin-top:10px} /* respiro entre a justificativa e o campo de detalhes */
 .dica{color:var(--aco);font-size:13px;font-weight:400;cursor:help}
 .info{background:var(--bege);border-left:4px solid var(--ouro);padding:12px 14px;border-radius:6px;margin:14px 0}
 .erro{background:#fbeeee;border-left:4px solid var(--vermelho);color:#8f2a2a;padding:12px 14px;border-radius:6px;margin-top:12px}
@@ -132,7 +134,7 @@ i.disponivel{background:var(--verde)}i.ocupado{background:var(--vermelho)}i.sujo
 #app-mobile .cartao h3{font-size:18px}
 #app-mobile label[for=mb-ciBusca]::after,#app-mobile label[for=mb-coBusca]::after,#app-mobile label[for=mb-rNome]::after,#app-mobile label[for=mb-rCpf]::after,#app-mobile label[for=mb-rEnt]::after,#app-mobile label[for=mb-rSai]::after,#app-mobile label[for=mb-rPax]::after,#app-mobile label[for=mb-cQuarto]::after,#app-mobile label[for=mb-cProduto]::after,#app-mobile label[for=mb-mJust]::after{content:" *";color:var(--vermelho)}
 #app-mobile input,#app-mobile select,#app-mobile textarea{min-height:48px;font-size:16px}
-#app-mobile textarea{min-height:64px}
+#app-mobile textarea{min-height:64px;margin-top:10px}
 #app-mobile .acoes{display:grid;align-items:stretch;gap:10px}
 #app-mobile .btn{width:100%;min-height:52px;display:flex;align-items:center;justify-content:center;gap:8px}
 #app-mobile .btn .ic{pointer-events:none}
