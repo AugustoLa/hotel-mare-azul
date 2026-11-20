@@ -1,665 +1,346 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Hotel Maré Azul — Recepção</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <nav class="menu" aria-label="Menu principal">
-      <div class="marca">
-        🌊 <strong>Hotel Maré Azul</strong><small>Sistema de recepção</small>
-      </div>
-      <button data-tela="dashboard">🏠 Dashboard</button>
-      <button data-tela="mapa">🗺️ Mapa de quartos</button>
-      <button data-tela="checkin">🔑 Check-in</button>
-      <button data-tela="checkout">🧳 Check-out</button>
-      <button data-tela="reservas">📅 Reservas <kbd>F2</kbd></button>
-      <button data-tela="cancelamento">🚫 Cancelamento</button>
-      <button data-tela="consumo">🥤 Consumo <kbd>F3</kbd></button>
-      <button class="ajuda" id="btnAjuda">❓ Atalhos e ajuda</button>
-    </nav>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotel Maré Azul — Recepção</title>
+<link rel="stylesheet" href="desktop.css">
+<link rel="stylesheet" href="desktop.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="menu" aria-label="Menu principal">
+  <div class="marca">
+    <img class="ic-marca" src="onda.png" alt="Ícone Hotel Maré Azul">
+    <div class="marca-texto">
+      <strong>Hotel Maré Azul</strong>
+      <small>Sistema de recepção</small>
+    </div>
+  </div>
+  <button data-tela="dashboard"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg> Dashboard </button>
+  <button data-tela="mapa"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg> Mapa de quartos </button>
+  <button data-tela="checkin"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3"/></svg> Check-in </button>
+  <button data-tela="checkout"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M9 8V5h6v3"/></svg> Check-out </button>
+  <button data-tela="reservas"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M8 3v4M16 3v4"/></svg> Reservas <kbd>F2</kbd></button>
+  <button data-tela="cancelamento"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 8l8 8M16 8l-8 8"/></svg> Cancelamento </button>
+  <button data-tela="consumo"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12l-1.5 16h-9zM7 9h10"/></svg> Consumo <kbd>F3</kbd></button>
+  <button class="ajuda" id="btnAjuda"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 015 .5c0 1.5-2.5 2-2.5 3.5M12 17v.5"/></svg> Atalhos e ajuda</button>
+</nav>
 
-    <main>
-      <header class="topo">
-        <h2 id="titulo">Dashboard</h2>
-        <span id="dataHoje"></span>
-        <span class="operador">👤 Operador: Marina (Recepção)</span>
-      </header>
+<main>
+<header class="topo">
+  <h2 id="titulo">Dashboard</h2>
+  <span id="dataHoje"></span>
+  <span class="operador"><span class="avatar">M</span>Operador: Marina (Recepção)</span>
+</header>
 
-      <!-- DASHBOARD -->
-      <section class="tela" id="dashboard">
-        <div class="indicadores" id="indicadores"></div>
-        <div class="cartao">
-          <h3>Comece por aqui</h3>
-          <p>
-            Escolha uma operação no menu ou use os atalhos: <kbd>F2</kbd> nova
-            reserva, <kbd>F3</kbd> lançar consumo, <kbd>Esc</kbd> voltar.
-          </p>
-          <div class="acoes">
-            <button class="btn" onclick="irPara('checkin')">
-              🔑 Fazer check-in
-            </button>
-            <button class="btn" onclick="irPara('checkout')">
-              🧳 Fazer check-out
-            </button>
-            <button class="btn" onclick="irPara('reservas')">
-              📅 Nova reserva
-            </button>
-          </div>
-        </div>
-      </section>
+<!-- DASHBOARD -->
+<section class="tela" id="dashboard">
+  <div class="indicadores" id="indicadores"></div>
+  <div class="cartao">
+    <h3>Comece por aqui</h3>
+    <p>Escolha uma operação no menu ou use os atalhos: <kbd>F2</kbd> nova reserva, <kbd>F3</kbd> lançar consumo, <kbd>Esc</kbd> voltar.</p>
+    <div class="acoes">
+      <button class="btn" onclick="irPara('checkin')">🔑 Fazer check-in</button>
+      <button class="btn" onclick="irPara('checkout')">🧳 Fazer check-out</button>
+      <button class="btn" onclick="irPara('reservas')">📅 Nova reserva</button>
+    </div>
+  </div>
+</section>
 
-      <!-- MAPA -->
-      <section class="tela" id="mapa">
-        <div class="legenda">
-          <span><i class="disponivel"></i>Disponível</span
-          ><span><i class="ocupado"></i>Ocupado</span>
-          <span><i class="sujo"></i>Sujo / manutenção</span
-          ><span><i class="reservado"></i>Reservado para hoje</span>
-        </div>
-        <div class="grid" id="grid"></div>
-      </section>
+<!-- MAPA -->
+<section class="tela" id="mapa">
+  <div class="legenda">
+    <span><i class="disponivel"></i>✅ Disponível</span><span><i class="ocupado"></i>🛏️ Ocupado</span>
+    <span><i class="sujo"></i>🧹 Sujo / manutenção</span><span><i class="reservado"></i>📌 Reservado para hoje</span>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
 
-      <!-- CHECK-IN -->
-      <section class="tela" id="checkin">
-        <div class="duas">
-          <div class="cartao">
-            <h3>1. Localizar hóspede</h3>
-            <label for="ciBusca"
-              >Nome ou CPF
-              <span
-                class="dica"
-                title="Digite parte do nome ou do CPF e escolha na lista"
-                >ⓘ</span
-              ></label
-            >
-            <input
-              id="ciBusca"
-              autocomplete="off"
-              placeholder="Ex.: Carlos ou 123.456..."
-            />
-            <ul class="sug" id="ciSug" hidden></ul>
-            <div id="ciHospede" class="info">Nenhum hóspede selecionado.</div>
-            <div class="acoes">
-              <button class="btn padrao" id="ciConfirmar" disabled>
-                ✔ Confirmar check-in
-              </button>
-              <button class="btn sec" id="ciLimpar">Limpar</button>
-            </div>
-          </div>
-          <div class="cartao">
-            <h3>2. Quartos compatíveis</h3>
-            <div id="ciQuartos" class="lista">
-              Selecione um hóspede para ver os quartos.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CHECK-OUT -->
-      <section class="tela" id="checkout">
-        <div class="cartao">
-          <label for="coBusca">Número do quarto ou nome do hóspede</label>
-          <input
-            id="coBusca"
-            autocomplete="off"
-            placeholder="Ex.: 101 ou Maria"
-          />
-          <ul class="sug" id="coSug" hidden></ul>
-        </div>
-        <div class="cartao" id="coCorpo" hidden>
-          <div id="coInfo" class="info"></div>
-          <table>
-            <thead>
-              <tr>
-                <th>Data</th>
-                <th>Descrição</th>
-                <th class="n">Valor unit.</th>
-                <th class="n">Qtd.</th>
-                <th class="n">Total</th>
-              </tr>
-            </thead>
-            <tbody id="coTabela"></tbody>
-            <tfoot>
-              <tr>
-                <td colspan="4">Total geral</td>
-                <td class="n" id="coTotal"></td>
-              </tr>
-            </tfoot>
-          </table>
-          <div class="acoes">
-            <button class="btn padrao" id="coPagar">
-              💳 Confirmar pagamento
-            </button>
-            <button class="btn" id="coLiberar" disabled>
-              🔓 Liberar quarto
-            </button>
-            <span id="coDica" class="dica"
-              >Confirme o pagamento para liberar o quarto.</span
-            >
-          </div>
-        </div>
-      </section>
-
-      <!-- RESERVAS -->
-      <section class="tela" id="reservas">
-        <div class="duas">
-          <div class="cartao">
-            <h3>Nova reserva</h3>
-            <div class="linha">
-              <div>
-                <label for="rNome">Nome do hóspede</label
-                ><input id="rNome" autocomplete="off" />
-              </div>
-              <div>
-                <label for="rCpf">CPF (11 números)</label
-                ><input id="rCpf" maxlength="14" placeholder="000.000.000-00" />
-              </div>
-            </div>
-            <div class="linha">
-              <div>
-                <label for="rEnt">Data de entrada</label
-                ><input type="date" id="rEnt" />
-              </div>
-              <div>
-                <label for="rSai">Data de saída</label
-                ><input type="date" id="rSai" />
-              </div>
-            </div>
-            <div class="linha">
-              <div>
-                <label for="rCat">Categoria</label
-                ><select id="rCat"></select>
-              </div>
-              <div>
-                <label for="rPax">Hóspedes</label
-                ><input type="number" id="rPax" min="1" max="4" value="1" />
-              </div>
-              <div>
-                <label for="rValor">Valor estimado</label
-                ><input id="rValor" readonly value="R$ 0,00" />
-              </div>
-            </div>
-            <div id="rErro" class="erro" hidden></div>
-            <div class="acoes">
-              <button class="btn padrao" id="rConfirmar">
-                ✔ Confirmar reserva
-              </button>
-              <button class="btn sec" id="rLimpar">Limpar</button>
-            </div>
-          </div>
-          <div class="cartao">
-            <h3>Disponibilidade no período</h3>
-            <div id="rContadores" class="contadores"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CANCELAMENTO -->
-      <section class="tela" id="cancelamento">
-        <div class="cartao">
-          <label for="cBusca">Buscar reserva por nome, CPF ou código</label>
-          <input
-            id="cBusca"
-            autocomplete="off"
-            placeholder="Ex.: RSV-1001, Ana, 123..."
-          />
-          <table>
-            <thead>
-              <tr>
-                <th>Código</th>
-                <th>Hóspede</th>
-                <th>Quarto</th>
-                <th>Período</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody id="cLista"></tbody>
-          </table>
-        </div>
-        <div class="cartao" id="cDetalhe" hidden></div>
-      </section>
-
-      <!-- CONSUMO -->
-      <section class="tela" id="consumo">
-        <div class="duas">
-          <div class="cartao">
-            <h3>Lançar consumo</h3>
-            <label for="cQuarto">Quarto</label>
-            <input
-              id="cQuarto"
-              inputmode="numeric"
-              placeholder="Ex.: 101"
-              autocomplete="off"
-            />
-            <small id="cHospede" class="dica"></small>
-            <label for="cProduto"
-              >Bebida
-              <span class="dica" title="Digite 'co' para Coca-Cola"
-                >ⓘ</span
-              ></label
-            >
-            <input
-              id="cProduto"
-              autocomplete="off"
-              placeholder="Digite para pesquisar"
-            />
-            <ul class="sug" id="cSug" hidden></ul>
-            <div class="linha">
-              <div>
-                <label for="cQtd">Qtd.</label
-                ><input type="number" id="cQtd" min="1" value="1" />
-              </div>
-              <div>
-                <label for="cPreco">Preço unit.</label
-                ><input id="cPreco" readonly />
-              </div>
-              <div>
-                <label for="cTotal">Total</label><input id="cTotal" readonly />
-              </div>
-            </div>
-            <div id="cErro" class="erro" hidden></div>
-            <button class="btn padrao" id="cRegistrar">
-              ＋ Registrar (Alt+L)
-            </button>
-          </div>
-          <div class="cartao">
-            <h3>Histórico de lançamentos</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>Hora</th>
-                  <th>Quarto</th>
-                  <th>Item</th>
-                  <th class="n">Qtd.</th>
-                  <th class="n">Total</th>
-                </tr>
-              </thead>
-              <tbody id="cHist"></tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- MODAL CANCELAMENTO -->
-    <div class="modal" id="modalCancel" role="dialog" aria-modal="true">
-      <div class="caixa">
-        <h3 class="perigo">⚠ Confirmar cancelamento de reserva?</h3>
-        <div id="mResumo" class="info"></div>
-        <p class="aviso">
-          Ação irreversível: a reserva será desativada e o quarto voltará a
-          ficar disponível.
-        </p>
-        <label for="mJust">Passo 1 — Justificativa (obrigatória)</label>
-        <select id="mJust">
-          <option value="">Selecione um motivo...</option>
-          <option>Desistência do hóspede</option>
-          <option>Mudança de datas</option>
-          <option>Reserva duplicada</option>
-          <option>Erro de cadastro</option>
-          <option>Outro</option>
-        </select>
-        <textarea
-          id="mObs"
-          rows="2"
-          placeholder="Detalhes (obrigatório se o motivo for 'Outro')"
-        ></textarea>
-        <p class="dica">
-          Passo 2 — O botão de confirmação libera 2 segundos depois da
-          justificativa.
-        </p>
-        <div class="acoes">
-          <button class="btn sec" id="mVoltar">← Manter reserva</button>
-          <button class="btn perigoBtn" id="mConfirmar" disabled>
-            Informe a justificativa
-          </button>
-        </div>
+<!-- CHECK-IN -->
+<section class="tela" id="checkin">
+  <div class="duas">
+    <div class="cartao">
+      <h3>1. Localizar hóspede</h3>
+      <label for="ciBusca">Nome ou CPF <span class="dica" title="Digite parte do nome ou do CPF e escolha na lista">ⓘ</span></label>
+      <input id="ciBusca" autocomplete="off" placeholder="Ex.: Carlos ou 123.456...">
+      <ul class="sug" id="ciSug" hidden></ul>
+      <div id="ciHospede" class="info">Nenhum hóspede selecionado.</div>
+      <div class="acoes">
+        <button class="btn padrao" id="ciConfirmar" disabled>✔ Confirmar check-in</button>
+        <button class="btn sec" id="ciLimpar">Limpar</button>
       </div>
     </div>
+    <div class="cartao">
+      <h3>2. Quartos compatíveis</h3>
+      <div id="ciQuartos" class="lista">Selecione um hóspede para ver os quartos.</div>
+    </div>
+  </div>
+</section>
 
-    <!-- MODAL AJUDA -->
-    <div class="modal" id="modalAjuda" role="dialog" aria-modal="true">
-      <div class="caixa">
-        <h3>Atalhos de teclado</h3>
-        <table>
-          <tbody>
-            <tr>
-              <td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td>
-              <td>Avançar / voltar entre campos</td>
-            </tr>
-            <tr>
-              <td><kbd>F2</kbd></td>
-              <td>Nova reserva</td>
-            </tr>
-            <tr>
-              <td><kbd>F3</kbd></td>
-              <td>Lançamento de consumo</td>
-            </tr>
-            <tr>
-              <td><kbd>Alt</kbd>+<kbd>L</kbd></td>
-              <td>Registrar consumo</td>
-            </tr>
-            <tr>
-              <td><kbd>Enter</kbd></td>
-              <td>
-                Confirmar a ação principal da tela (ou escolher a 1ª sugestão)
-              </td>
-            </tr>
-            <tr>
-              <td><kbd>Esc</kbd></td>
-              <td>Fechar janela, ou voltar ao Dashboard</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="acoes">
-          <button class="btn" id="fecharAjuda">Entendi</button>
-        </div>
+<!-- CHECK-OUT -->
+<section class="tela" id="checkout">
+  <div class="cartao">
+    <label for="coBusca">Número do quarto ou nome do hóspede</label>
+    <input id="coBusca" autocomplete="off" placeholder="Ex.: 101 ou Maria">
+    <ul class="sug" id="coSug" hidden></ul>
+  </div>
+  <div class="cartao" id="coCorpo" hidden>
+    <div id="coInfo" class="info"></div>
+    <table><thead><tr><th>Data</th><th>Descrição</th><th class="n">Valor unit.</th><th class="n">Qtd.</th><th class="n">Total</th></tr></thead>
+    <tbody id="coTabela"></tbody>
+    <tfoot><tr><td colspan="4">Total geral</td><td class="n" id="coTotal"></td></tr></tfoot></table>
+    <div class="acoes">
+      <button class="btn padrao" id="coPagar">💳 Confirmar pagamento</button>
+      <button class="btn" id="coLiberar" disabled>🔓 Liberar quarto</button>
+      <span id="coDica" class="dica">Confirme o pagamento para liberar o quarto.</span>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVAS -->
+<section class="tela" id="reservas">
+  <div class="duas">
+    <div class="cartao">
+      <h3>Nova reserva</h3>
+      <div class="linha">
+        <div><label for="rNome">Nome do hóspede</label><input id="rNome" autocomplete="off"></div>
+        <div><label for="rCpf">CPF (11 números)</label><input id="rCpf" maxlength="14" placeholder="000.000.000-00"></div>
+      </div>
+      <div class="linha">
+        <div><label for="rEnt">Data de entrada</label><input type="date" id="rEnt"></div>
+        <div><label for="rSai">Data de saída</label><input type="date" id="rSai"></div>
+      </div>
+      <div class="linha">
+        <div><label for="rCat">Categoria</label><select id="rCat"></select></div>
+        <div><label for="rPax">Hóspedes</label><input type="number" id="rPax" min="1" max="4" value="1"></div>
+        <div><label for="rValor">Valor estimado</label><input id="rValor" readonly value="R$ 0,00"></div>
+      </div>
+      <div id="rErro" class="erro" hidden></div>
+      <div class="acoes">
+        <button class="btn padrao" id="rConfirmar">✔ Confirmar reserva</button>
+        <button class="btn sec" id="rLimpar">Limpar</button>
       </div>
     </div>
+    <div class="cartao"><h3>Disponibilidade no período</h3><div id="rContadores" class="contadores"></div></div>
+  </div>
+</section>
 
-    <!-- ===== VERSÃO MOBILE (aparece só em telas de até 768px; usa os mesmos dados do desktop) ===== -->
-    <div id="app-mobile">
-      <header class="mtopo">
-        <button class="voltar" id="mb-voltar" hidden>← Voltar</button>
-        <small>🌊 Hotel Maré Azul · 👤 Marina (Atendente móvel)</small>
-        <h1 id="mb-titulo">Quartos</h1>
-      </header>
+<!-- CANCELAMENTO -->
+<section class="tela" id="cancelamento">
+  <div class="cartao">
+    <label for="cBusca">Buscar reserva por nome, CPF ou código</label>
+    <input id="cBusca" autocomplete="off" placeholder="Ex.: RSV-1001, Ana, 123...">
+    <table><thead><tr><th>Código</th><th>Hóspede</th><th>Quarto</th><th>Período</th><th></th></tr></thead><tbody id="cLista"></tbody></table>
+  </div>
+  <div class="cartao" id="cDetalhe" hidden></div>
+</section>
 
-      <main>
-        <!-- QUARTOS (mapa de status) -->
-        <section class="mtela" id="mb-quartos">
-          <div class="indicadores" id="mb-indicadores"></div>
-          <div class="legenda">
-            <span><i class="disponivel"></i>✅ Disponível</span
-            ><span><i class="ocupado"></i>🛏️ Ocupado</span>
-            <span><i class="sujo"></i>🧹 Sujo / manutenção</span
-            ><span><i class="reservado"></i>📌 Reservado hoje</span>
-          </div>
-          <p class="dica">Toque em um quarto ocupado para ver o hóspede.</p>
-          <div class="grid" id="mb-grid"></div>
-        </section>
-
-        <!-- ESTADIAS (check-in e check-out) -->
-        <section class="mtela" id="mb-estadias">
-          <div class="seg">
-            <button data-sub="checkin" class="ativo">🔑 Check-in</button
-            ><button data-sub="checkout">🧳 Check-out</button>
-          </div>
-
-          <div id="mb-checkin">
-            <div class="cartao">
-              <label for="mb-ciBusca"
-                >1. Hóspede
-                <span class="dica" title="Digite parte do nome ou do CPF"
-                  >ⓘ</span
-                ></label
-              >
-              <input
-                id="mb-ciBusca"
-                type="search"
-                enterkeyhint="search"
-                autocomplete="off"
-                placeholder="Nome ou CPF"
-              />
-              <div id="mb-ciLista" class="lista"></div>
-              <div class="acoes">
-                <button class="btn sec" id="mb-ciLimpar">Limpar seleção</button>
-              </div>
-            </div>
-            <div class="cartao" id="mb-ciPasso2" hidden>
-              <h3>2. Escolha o quarto</h3>
-              <div id="mb-ciQuartos" class="lista"></div>
-            </div>
-            <div class="rodape">
-              <small class="dica" id="mb-ciDica"
-                >Escolha um hóspede e um quarto para confirmar.</small
-              ><button class="btn" id="mb-ciConfirmar" disabled>
-                ✔ Confirmar check-in
-              </button>
-            </div>
-          </div>
-
-          <div id="mb-checkout" hidden>
-            <div class="cartao" id="mb-coBuscaBox">
-              <label for="mb-coBusca"
-                >1. Quarto ocupado
-                <span
-                  class="dica"
-                  title="Digite o número ou o nome, ou toque no quarto"
-                  >ⓘ</span
-                ></label
-              >
-              <input
-                id="mb-coBusca"
-                type="search"
-                enterkeyhint="search"
-                autocomplete="off"
-                placeholder="Ex.: 101 ou Maria"
-              />
-              <div id="mb-coLista" class="lista"></div>
-            </div>
-            <div class="cartao" id="mb-coCorpo" hidden>
-              <div id="mb-coInfo" class="info"></div>
-              <div id="mb-coItens"></div>
-              <button class="btn sec" id="mb-coVoltar">
-                ← Escolher outro quarto
-              </button>
-              <div class="rodape">
-                <div class="total">Total geral <b id="mb-coTotal"></b></div>
-                <small id="mb-coDica" class="dica"></small>
-                <div class="dupla">
-                  <button class="btn" id="mb-coPagar">
-                    💳 Marcar como pago</button
-                  ><button class="btn" id="mb-coLiberar" disabled>
-                    🔓 Liberar quarto
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- RESERVAS (lista + cancelamento; botão flutuante abre a nova reserva) -->
-        <section class="mtela" id="mb-reservas">
-          <div class="cartao">
-            <label for="mb-cBusca"
-              >Buscar reserva
-              <span class="dica" title="Por nome, CPF ou código">ⓘ</span></label
-            >
-            <input
-              id="mb-cBusca"
-              type="search"
-              enterkeyhint="search"
-              autocomplete="off"
-              placeholder="Ex.: RSV-1001 ou Ana"
-            />
-            <div id="mb-cLista"></div>
-          </div>
-          <button class="fab" id="mb-fab" aria-label="Nova reserva">
-            ＋<span>Nova reserva</span>
-          </button>
-        </section>
-
-        <!-- NOVA RESERVA (2 telas) -->
-        <section class="mtela" id="mb-novaReserva">
-          <div id="mb-rp1">
-            <div class="cartao">
-              <h3>1. Datas e categoria</h3>
-              <label for="mb-rEnt">Data de entrada</label
-              ><input type="date" id="mb-rEnt" />
-              <label for="mb-rSai">Data de saída</label
-              ><input type="date" id="mb-rSai" />
-              <label for="mb-rCat">Categoria</label
-              ><select id="mb-rCat"></select>
-              <label for="mb-rValor">Valor estimado</label
-              ><input id="mb-rValor" readonly value="R$ 0,00" />
-              <div id="mb-rContadores" class="contadores"></div>
-              <div id="mb-rErro1" class="erro" hidden></div>
-            </div>
-            <div class="rodape">
-              <button class="btn" id="mb-rProximo">
-                Próximo: dados do hóspede →
-              </button>
-            </div>
-          </div>
-          <div id="mb-rp2" hidden>
-            <div class="cartao">
-              <h3>2. Hóspede</h3>
-              <div id="mb-rResumo" class="info"></div>
-              <label for="mb-rNome">Nome do hóspede</label
-              ><input id="mb-rNome" enterkeyhint="next" autocomplete="off" />
-              <label for="mb-rCpf">CPF (11 números)</label
-              ><input
-                id="mb-rCpf"
-                inputmode="numeric"
-                enterkeyhint="done"
-                maxlength="14"
-                placeholder="000.000.000-00"
-              />
-              <label for="mb-rPax">Hóspedes (1 a 4)</label>
-              <div class="stepper">
-                <button
-                  type="button"
-                  id="mb-rMenos"
-                  aria-label="Menos um hóspede"
-                >
-                  −</button
-                ><input id="mb-rPax" value="1" readonly /><button
-                  type="button"
-                  id="mb-rMais"
-                  aria-label="Mais um hóspede"
-                >
-                  ＋
-                </button>
-              </div>
-              <div id="mb-rErro" class="erro" hidden></div>
-              <div class="acoes">
-                <button class="btn sec" id="mb-rVoltarPasso">
-                  ← Alterar datas
-                </button>
-              </div>
-            </div>
-            <div class="rodape">
-              <button class="btn" id="mb-rConfirmar">
-                ✔ Confirmar reserva
-              </button>
-            </div>
-          </div>
-        </section>
-
-        <!-- CONSUMO -->
-        <section class="mtela" id="mb-consumo">
-          <div class="cartao">
-            <label for="mb-cQuarto"
-              >1. Quarto
-              <span class="dica" title="Número do quarto ocupado"
-                >ⓘ</span
-              ></label
-            >
-            <input
-              id="mb-cQuarto"
-              inputmode="numeric"
-              enterkeyhint="next"
-              placeholder="Ex.: 101"
-              autocomplete="off"
-            />
-            <small id="mb-cHospede" class="dica"></small>
-            <label for="mb-cProduto"
-              >2. Bebida
-              <span
-                class="dica"
-                title="Digite 'co' para Coca-Cola ou toque em um item"
-                >ⓘ</span
-              ></label
-            >
-            <input
-              id="mb-cProduto"
-              type="search"
-              enterkeyhint="done"
-              placeholder="Digite para buscar"
-              autocomplete="off"
-            />
-            <div id="mb-cProdutos" class="lista"></div>
-            <label for="mb-cQtd">3. Quantidade</label>
-            <div class="stepper">
-              <button type="button" id="mb-cMenos" aria-label="Menos um">
-                −</button
-              ><input id="mb-cQtd" value="1" readonly /><button
-                type="button"
-                id="mb-cMais"
-                aria-label="Mais um"
-              >
-                ＋
-              </button>
-            </div>
-            <div class="total">Total <b id="mb-cTotal">R$ 0,00</b></div>
-            <div id="mb-cErro" class="erro" hidden></div>
-            <div id="mb-desfazer" class="info" hidden>
-              <span id="mb-desfazerTxt"></span
-              ><button class="btn sec" id="mb-btnDesfazer">↩ Desfazer</button>
-            </div>
-          </div>
-          <div class="cartao">
-            <h3>Últimos lançamentos</h3>
-            <div id="mb-cHist"></div>
-          </div>
-          <div class="rodape">
-            <button class="btn" id="mb-cRegistrar">🥤 Lançar</button>
-          </div>
-        </section>
-      </main>
-
-      <!-- CANCELAMENTO (folha inferior; 3 passos) -->
-      <div class="modal" id="mb-modalCancel" role="dialog" aria-modal="true">
-        <div class="caixa">
-          <button class="fechar" id="mb-mX" aria-label="Fechar">✕</button>
-          <h3 class="perigo">⚠ Cancelar reserva?</h3>
-          <div id="mb-mResumo" class="info"></div>
-          <p class="aviso">
-            Ação irreversível: a reserva será desativada e o quarto voltará a
-            ficar disponível.
-          </p>
-          <label for="mb-mJust">Passo 1 — Justificativa (obrigatória)</label>
-          <select id="mb-mJust">
-            <option value="">Selecione um motivo...</option>
-            <option>Desistência do hóspede</option>
-            <option>Mudança de datas</option>
-            <option>Reserva duplicada</option>
-            <option>Erro de cadastro</option>
-            <option>Outro</option>
-          </select>
-          <textarea
-            id="mb-mObs"
-            rows="2"
-            placeholder="Detalhes (obrigatório se o motivo for 'Outro')"
-          ></textarea>
-          <p class="dica">
-            Passo 2 — Segure o botão vermelho por 2 segundos. Soltar antes não
-            cancela nada.
-          </p>
-          <div class="acoes">
-            <button class="btn sec" id="mb-mVoltar">
-              ← Manter reserva (Voltar)
-            </button>
-            <button class="btn perigoBtn" id="mb-mConfirmar" disabled>
-              Informe a justificativa
-            </button>
-          </div>
-        </div>
+<!-- CONSUMO -->
+<section class="tela" id="consumo">
+  <div class="duas">
+    <div class="cartao">
+      <h3>Lançar consumo</h3>
+      <label for="cQuarto">Quarto</label>
+      <input id="cQuarto" inputmode="numeric" placeholder="Ex.: 101" autocomplete="off">
+      <small id="cHospede" class="dica"></small>
+      <label for="cProduto">Bebida <span class="dica" title="Digite 'co' para Coca-Cola">ⓘ</span></label>
+      <input id="cProduto" autocomplete="off" placeholder="Digite para pesquisar">
+      <ul class="sug" id="cSug" hidden></ul>
+      <div class="linha">
+        <div><label for="cQtd">Qtd.</label><input type="number" id="cQtd" min="1" value="1"></div>
+        <div><label for="cPreco">Preço unit.</label><input id="cPreco" readonly></div>
+        <div><label for="cTotal">Total</label><input id="cTotal" readonly></div>
       </div>
-
-      <nav class="abas" aria-label="Menu principal">
-        <button data-tela="quartos">🗺️<span>Quartos</span></button>
-        <button data-tela="estadias">🔑🧳<span>Estadias</span></button>
-        <button data-tela="reservas">📅<span>Reservas</span></button>
-        <button data-tela="consumo">🥤<span>Consumo</span></button>
-      </nav>
+      <div id="cErro" class="erro" hidden></div>
+      <button class="btn padrao" id="cRegistrar">＋ Registrar (Alt+L)</button>
     </div>
+    <div class="cartao"><h3>Histórico de lançamentos</h3>
+      <table><thead><tr><th>Hora</th><th>Quarto</th><th>Item</th><th class="n">Qtd.</th><th class="n">Total</th></tr></thead><tbody id="cHist"></tbody></table>
+    </div>
+  </div>
+</section>
+</main>
 
-    <div id="toast" role="status" aria-live="polite"></div>
-    <script src="script.js"></script>
-  </body>
+<!-- MODAL CANCELAMENTO -->
+<div class="modal" id="modalCancel" role="dialog" aria-modal="true">
+  <div class="caixa">
+    <h3 class="perigo">⚠ Confirmar cancelamento de reserva?</h3>
+    <div id="mResumo" class="info"></div>
+    <p class="aviso">Ação irreversível: a reserva será desativada e o quarto voltará a ficar disponível.</p>
+    <label for="mJust">Passo 1 — Justificativa (obrigatória)</label>
+    <select id="mJust"><option value="">Selecione um motivo...</option><option>Desistência do hóspede</option><option>Mudança de datas</option><option>Reserva duplicada</option><option>Erro de cadastro</option><option>Outro</option></select>
+    <textarea id="mObs" rows="2" placeholder="Detalhes (obrigatório se o motivo for 'Outro')"></textarea>
+    <p class="dica">Passo 2 — O botão de confirmação libera 2 segundos depois da justificativa.</p>
+    <div class="acoes">
+      <button class="btn sec" id="mVoltar">← Manter reserva</button>
+      <button class="btn perigoBtn" id="mConfirmar" disabled>Informe a justificativa</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL AJUDA -->
+<div class="modal" id="modalAjuda" role="dialog" aria-modal="true">
+  <div class="caixa">
+    <h3>Atalhos de teclado</h3>
+    <table><tbody>
+      <tr><td><kbd>Tab</kbd> / <kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Avançar / voltar entre campos</td></tr>
+      <tr><td><kbd>F2</kbd></td><td>Nova reserva</td></tr>
+      <tr><td><kbd>F3</kbd></td><td>Lançamento de consumo</td></tr>
+      <tr><td><kbd>Alt</kbd>+<kbd>L</kbd></td><td>Registrar consumo</td></tr>
+      <tr><td><kbd>Enter</kbd></td><td>Confirmar a ação principal da tela (ou escolher a 1ª sugestão)</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>Fechar janela, ou voltar ao Dashboard</td></tr>
+    </tbody></table>
+    <div class="acoes"><button class="btn" id="fecharAjuda">Entendi</button></div>
+  </div>
+</div>
+
+<!-- ===== VERSÃO MOBILE (aparece só em telas de até 768px; usa os mesmos dados do desktop) ===== -->
+<div id="app-mobile">
+<header class="mtopo">
+  <div class="cab-linha">
+    <img class="ic-marca" src="onda.png" alt="Ícone Hotel Maré Azul">
+    <div class="marca-texto"><strong>Hotel Maré Azul</strong><small>Atendimento móvel</small></div>
+    <span class="avatar" title="Operador: Marina (Atendente móvel)">M</span>
+  </div>
+  <div class="cab-titulo"><button class="voltar" id="mb-voltar" hidden><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg> Voltar</button><h1 id="mb-titulo">Quartos</h1></div>
+</header>
+
+<main>
+<!-- QUARTOS (mapa de status) -->
+<section class="mtela" id="mb-quartos">
+  <div class="indicadores" id="mb-indicadores"></div>
+  <div class="legenda">
+    <span><i class="disponivel"></i>✅ Disponível</span><span><i class="ocupado"></i>🛏️ Ocupado</span>
+    <span><i class="sujo"></i>🧹 Sujo / manutenção</span><span><i class="reservado"></i>📌 Reservado hoje</span>
+  </div>
+  <p class="dica">Toque em um quarto ocupado para ver o hóspede.</p>
+  <div class="grid" id="mb-grid"></div>
+</section>
+
+<!-- ESTADIAS (check-in e check-out) -->
+<section class="mtela" id="mb-estadias">
+  <div class="seg"><button data-sub="checkin" class="ativo"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3"/></svg> Check-in</button><button data-sub="checkout"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M9 8V5h6v3"/></svg> Check-out</button></div>
+
+  <div id="mb-checkin">
+    <div class="cartao">
+      <label for="mb-ciBusca">1. Hóspede <span class="dica" title="Digite parte do nome ou do CPF">ⓘ</span></label>
+      <input id="mb-ciBusca" type="search" enterkeyhint="search" autocomplete="off" placeholder="Nome ou CPF">
+      <div id="mb-ciLista" class="lista"></div>
+      <div class="acoes"><button class="btn sec" id="mb-ciLimpar">Limpar seleção</button></div>
+    </div>
+    <div class="cartao" id="mb-ciPasso2" hidden><h3>2. Escolha o quarto</h3><div id="mb-ciQuartos" class="lista"></div></div>
+    <div class="rodape"><small class="dica" id="mb-ciDica">Escolha um hóspede e um quarto para confirmar.</small><button class="btn" id="mb-ciConfirmar" disabled>✔ Confirmar check-in</button></div>
+  </div>
+
+  <div id="mb-checkout" hidden>
+    <div class="cartao" id="mb-coBuscaBox">
+      <label for="mb-coBusca">1. Quarto ocupado <span class="dica" title="Digite o número ou o nome, ou toque no quarto">ⓘ</span></label>
+      <input id="mb-coBusca" type="search" enterkeyhint="search" autocomplete="off" placeholder="Ex.: 101 ou Maria">
+      <div id="mb-coLista" class="lista"></div>
+    </div>
+    <div class="cartao" id="mb-coCorpo" hidden>
+      <div id="mb-coInfo" class="info"></div>
+      <div id="mb-coItens"></div>
+      <button class="btn sec" id="mb-coVoltar">← Escolher outro quarto</button>
+      <div class="rodape">
+        <div class="total">Total geral <b id="mb-coTotal"></b></div>
+        <small id="mb-coDica" class="dica"></small>
+        <div class="dupla"><button class="btn" id="mb-coPagar">💳 Marcar como pago</button><button class="btn" id="mb-coLiberar" disabled>🔓 Liberar quarto</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVAS (lista + cancelamento; botão flutuante abre a nova reserva) -->
+<section class="mtela" id="mb-reservas">
+  <div class="cartao">
+    <label for="mb-cBusca">Buscar reserva <span class="dica" title="Por nome, CPF ou código">ⓘ</span></label>
+    <input id="mb-cBusca" type="search" enterkeyhint="search" autocomplete="off" placeholder="Ex.: RSV-1001 ou Ana">
+    <div id="mb-cLista"></div>
+  </div>
+  <button class="fab" id="mb-fab" aria-label="Nova reserva">＋<span>Nova reserva</span></button>
+</section>
+
+<!-- NOVA RESERVA (2 telas) -->
+<section class="mtela" id="mb-novaReserva">
+  <div id="mb-rp1">
+    <div class="cartao">
+      <h3>1. Datas e categoria</h3>
+      <label for="mb-rEnt">Data de entrada</label><input type="date" id="mb-rEnt">
+      <label for="mb-rSai">Data de saída</label><input type="date" id="mb-rSai">
+      <label for="mb-rCat">Categoria</label><select id="mb-rCat"></select>
+      <label for="mb-rValor">Valor estimado</label><input id="mb-rValor" readonly value="R$ 0,00">
+      <div id="mb-rContadores" class="contadores"></div>
+      <div id="mb-rErro1" class="erro" hidden></div>
+    </div>
+    <div class="rodape"><button class="btn" id="mb-rProximo">Próximo: dados do hóspede →</button></div>
+  </div>
+  <div id="mb-rp2" hidden>
+    <div class="cartao">
+      <h3>2. Hóspede</h3>
+      <div id="mb-rResumo" class="info"></div>
+      <label for="mb-rNome">Nome do hóspede</label><input id="mb-rNome" enterkeyhint="next" autocomplete="off">
+      <label for="mb-rCpf">CPF (11 números)</label><input id="mb-rCpf" inputmode="numeric" enterkeyhint="done" maxlength="14" placeholder="000.000.000-00">
+      <label for="mb-rPax">Hóspedes (1 a 4)</label>
+      <div class="stepper"><button type="button" id="mb-rMenos" aria-label="Menos um hóspede">−</button><input id="mb-rPax" value="1" readonly><button type="button" id="mb-rMais" aria-label="Mais um hóspede">＋</button></div>
+      <div id="mb-rErro" class="erro" hidden></div>
+      <div class="acoes"><button class="btn sec" id="mb-rVoltarPasso">← Alterar datas</button></div>
+    </div>
+    <div class="rodape"><button class="btn" id="mb-rConfirmar">✔ Confirmar reserva</button></div>
+  </div>
+</section>
+
+<!-- CONSUMO -->
+<section class="mtela" id="mb-consumo">
+  <div class="cartao">
+    <label for="mb-cQuarto">1. Quarto <span class="dica" title="Número do quarto ocupado">ⓘ</span></label>
+    <input id="mb-cQuarto" inputmode="numeric" enterkeyhint="next" placeholder="Ex.: 101" autocomplete="off">
+    <small id="mb-cHospede" class="dica"></small>
+    <label for="mb-cProduto">2. Bebida <span class="dica" title="Digite 'co' para Coca-Cola ou toque em um item">ⓘ</span></label>
+    <input id="mb-cProduto" type="search" enterkeyhint="done" placeholder="Digite para buscar" autocomplete="off">
+    <div id="mb-cProdutos" class="lista"></div>
+    <label for="mb-cQtd">3. Quantidade</label>
+    <div class="stepper"><button type="button" id="mb-cMenos" aria-label="Menos um">−</button><input id="mb-cQtd" value="1" readonly><button type="button" id="mb-cMais" aria-label="Mais um">＋</button></div>
+    <div class="total">Total <b id="mb-cTotal">R$ 0,00</b></div>
+    <div id="mb-cErro" class="erro" hidden></div>
+    <div id="mb-desfazer" class="info" hidden><span id="mb-desfazerTxt"></span><button class="btn sec" id="mb-btnDesfazer">↩ Desfazer</button></div>
+  </div>
+  <div class="cartao"><h3>Últimos lançamentos</h3><div id="mb-cHist"></div></div>
+  <div class="rodape"><button class="btn" id="mb-cRegistrar">＋ Lançar</button></div>
+</section>
+</main>
+
+<!-- CANCELAMENTO (folha inferior; 3 passos) -->
+<div class="modal" id="mb-modalCancel" role="dialog" aria-modal="true">
+  <div class="caixa">
+    <button class="fechar" id="mb-mX" aria-label="Fechar">✕</button>
+    <h3 class="perigo">⚠ Cancelar reserva?</h3>
+    <div id="mb-mResumo" class="info"></div>
+    <p class="aviso">Ação irreversível: a reserva será desativada e o quarto voltará a ficar disponível.</p>
+    <label for="mb-mJust">Passo 1 — Justificativa (obrigatória)</label>
+    <select id="mb-mJust"><option value="">Selecione um motivo...</option><option>Desistência do hóspede</option><option>Mudança de datas</option><option>Reserva duplicada</option><option>Erro de cadastro</option><option>Outro</option></select>
+    <textarea id="mb-mObs" rows="2" placeholder="Detalhes (obrigatório se o motivo for 'Outro')"></textarea>
+    <p class="dica">Passo 2 — Segure o botão vermelho por 2 segundos. Soltar antes não cancela nada.</p>
+    <div class="acoes">
+      <button class="btn sec" id="mb-mVoltar">← Manter reserva (Voltar)</button>
+      <button class="btn perigoBtn" id="mb-mConfirmar" disabled>Informe a justificativa</button>
+    </div>
+  </div>
+</div>
+
+
+<nav class="abas" aria-label="Menu principal">
+  <button data-tela="quartos"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><span>Quartos</span></button>
+  <button data-tela="estadias"><span class="dupla-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3"/></svg><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M9 8V5h6v3"/></svg></span><span>Estadias</span></button>
+  <button data-tela="reservas"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M8 3v4M16 3v4"/></svg><span>Reservas</span></button>
+  <button data-tela="consumo"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12l-1.5 16h-9zM7 9h10"/></svg><span>Consumo</span></button>
+</nav>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="desktop.js"></script>
+</body>
 </html>
