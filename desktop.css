@@ -167,7 +167,9 @@ i.disponivel{background:var(--verde)}i.ocupado{background:var(--vermelho)}i.sujo
 #app-mobile .indicadores{grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
 #app-mobile .ind{padding:14px 10px}
 #app-mobile .ind b{font-size:32px}
-#app-mobile .legenda{flex-wrap:wrap;gap:6px 14px;font-size:13px;margin-bottom:10px}
+#app-mobile .legenda{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px;margin-bottom:12px}
+#app-mobile .legenda span{display:flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:6px 8px;background:#fff;border:1px solid var(--borda);border-radius:20px;text-align:center}
+#app-mobile .legenda i{margin:0}
 #app-mobile .grid{grid-template-columns:1fr 1fr;gap:12px}
 #app-mobile button.quarto{font:inherit;width:100%;cursor:pointer;padding:14px 6px}
 #app-mobile .quarto b{font-size:30px}

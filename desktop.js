@@ -337,7 +337,7 @@ function stepper(menos, mais, campo, min, max, aoMudar) {
 // ===== NAVEGAÇÃO (4 abas inferiores: Quartos, Estadias, Reservas, Consumo) =====
 var titulos = { quartos: 'Quartos', estadias: 'Estadias', reservas: 'Reservas', novaReserva: 'Nova reserva', consumo: 'Consumo' };
 var abaDe = { novaReserva: 'reservas' };
-var nomes = { disponivel: 'Disponível', ocupado: 'Ocupado', sujo: 'Sujo / manutenção', reservado: 'Reservado hoje' };
+var nomes = { disponivel: 'Disponível', ocupado: 'Ocupado', sujo: 'Manutenção', reservado: 'Reservado hoje' };
 var icones = { disponivel: '✅', ocupado: '🛏️', sujo: '🧹', reservado: '📌' };
 var telaAtual = 'quartos', sub = 'checkin';
 function irPara(nome) {
@@ -395,7 +395,7 @@ function ciRender() {
   if (ciHosp) {
     lista('ciQuartos', quartos.filter(function (q) { return q.cat === ciHosp.cat; }).map(function (q) {
       var st = statusDe(q), r = reservaHoje(q), livre = st === 'disponivel' || (st === 'reservado' && r.cpf === ciHosp.cpf);
-      var motivo = { ocupado: 'Ocupado', sujo: 'Sujo / manutenção', reservado: 'Reservado para outro hóspede' }[st];
+      var motivo = { ocupado: 'Ocupado', sujo: 'Manutenção', reservado: 'Reservado para outro hóspede' }[st];
       return { html: '<b>Quarto ' + q.n + '</b><small>' + (livre ? 'Disponível' : motivo + ' (indisponível)') + '</small>', off: !livre, sel: ciQuarto === q, q: q };
     }), function (it) { ciQuarto = it.q; ciRender(); });
   }
